@@ -23,7 +23,7 @@ saldo = saldo +1;
 
 
 }
-   
+    post_wait(&semaforo);
 
 
 return NULL;
@@ -31,7 +31,7 @@ return NULL;
 }
 int main()
 {
-    sem_init(&semaforo,0,4);
+    sem_init(&semaforo,0,1);
     int n1 = 1;
     int n2 = 2;
     int n3 = 3;
