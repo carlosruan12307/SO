@@ -21,25 +21,25 @@ int i;
 int n;
 
 n = *((int*)v);
- sem_wait(&semaforo);
+
 
 for(i=0;i<1000000;i++){
 
 //printf("Thread %d esta acessando...\n",n);
-
+ sem_wait(&semaforo);
 saldo = saldo +1;
-
+ sem_post(&semaforo);
 
 
 }
-    sem_post(&semaforo);
+   
 
 return NULL;
 
 }
 int main()
 {
-  sem_init(&semaforo,0,4);
+  sem_init(&semaforo,0,1);
     int n1 = 1;
     int n2 = 2;
     int n3 = 3;
