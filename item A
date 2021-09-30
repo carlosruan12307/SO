@@ -23,7 +23,7 @@ saldo = saldo +1;
 
 
 }
-    sem_post(&semaforo);
+   
 
 
 return NULL;
