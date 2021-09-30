@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <bits/stdc++.h>
 #include <Windows.h>
-pthread_mutex_t semaforo;
+sem_t semaforo;
  int vez = 1;
  int saldo = 0;
 void entrar(int N){
@@ -21,23 +21,25 @@ int i;
 int n;
 
 n = *((int*)v);
-     pthread_mutex_lock(&semaforo);
-for(i=0;i<10;i++){
+ sem_wait(&semaforo);
 
-printf("Thread %d esta acessando...\n",n);
+for(i=0;i<1000000;i++){
+
+//printf("Thread %d esta acessando...\n",n);
 
 saldo = saldo +1;
 
 
 
 }
-pthread_mutex_unlock(&semaforo);
+    sem_post(&semaforo);
 
 return NULL;
 
 }
 int main()
 {
+  sem_init(&semaforo,0,4);
     int n1 = 1;
     int n2 = 2;
     int n3 = 3;
